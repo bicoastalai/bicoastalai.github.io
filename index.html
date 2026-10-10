@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dAImon agent</title>
+<style>body{font:16px/1.55 -apple-system,system-ui,sans-serif;max-width:42rem;margin:2rem auto;padding:0 1rem;color:#1d1d1f;background:#fff}
+code{font-size:.9em;word-break:break-all}h2{margin-top:1.8rem;font-size:1.1rem}</style></head><body>
+<h1>dAImon</h1>
+<p>dAImon is a personal assistant that shops and runs errands for one person, its operator, Damon Leslie. It acts only when he asks, from his own computer, in his own browser and signed in to his own accounts. It does not crawl, index, or collect content for training; pages are read only to complete the task in front of it.</p>
+<h2>What it does on your site</h2>
+<ul><li>Searches for a product he asked for, checks price, stock and his store's pickup.</li>
+<li>Adds it to his cart, or prepares checkout. It never places an order without his explicit approval on his phone, with Face ID; usually he pays himself.</li>
+<li>Traffic is low: one person's errands, a few page views at a time.</li>
+<li>When a site shows a human check, he completes it himself. dAImon does not solve or evade CAPTCHAs or other bot controls.</li></ul>
+<h2>How it identifies itself</h2>
+<p>Requests from the browser tabs dAImon drives carry <a href="https://datatracker.ietf.org/doc/draft-meunier-web-bot-auth-architecture/">Web Bot Auth</a> HTTP message signatures (Ed25519, <code>tag="web-bot-auth"</code>), with <code>Signature-Agent: "https://daimon-agent.pages.dev"</code>.</p>
+<ul><li>Key directory: <a href="https://daimon-agent.pages.dev/.well-known/http-message-signatures-directory"><code>https://daimon-agent.pages.dev/.well-known/http-message-signatures-directory</code></a></li>
+<li>Key id: <code>qI28Nfl5HbYgGrVIX_kV3hdPv6u_nDGUwKOC4l3gnBg</code></li>
+<li>Calls to stores' own agent interfaces (<a href="https://ucp.dev">UCP</a>) use the User-Agent <code>dAImon (+https://bicoastalai.github.io)</code> and the profile <code>https://cdn.jsdelivr.net/gh/bicoastalai/bicoastalai.github.io@47a4a7c7df0143564c065b0f897aacc229f4cfca/ucp/profile.json</code>.</li></ul>
+<p>A request with a valid signature for that key is dAImon. To allow it past bot checks, or to block it, match on the verified signature; blocking it only sends him to shop by hand.</p>
+<h2>Contact</h2>
+<p>Open an issue at <a href="https://github.com/bicoastalai/bicoastalai.github.io/issues">github.com/bicoastalai/bicoastalai.github.io</a>.</p>
+</body></html>
